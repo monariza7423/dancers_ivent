@@ -1,24 +1,41 @@
-# README
+# <Dancers Ivent>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
 
-Things you may want to cover:
+<「小さなダンスイベントでも周知」
+主催者は簡単に情報の周知、参加者はイベント情報を手に入れ、エントリーまでを行えるようにする。
+### サイトテーマ>
 
-* Ruby version
+### テーマを選んだ理由
+<大学生の時に同じサークルの友達何人かでダンスイベントを企画したことがあった。
+しかし、同サークル内での友達関係であったこともあり、結局参加者は自分達の身内が多く集うイベントとなってしまった。
+その一番の原因がSNSでの発信であり、結局フォローされている身内のみに周知されてしまったことにあると考えた。
+地方の小さなイベントは個人で開催することがほとんどであり、資金面でも広告周知が難しい。
+そのため、どんな小さなイベントでも簡単に掲載ができ開催地等も検索できるサイトにより身内だけの周知だけでなく、
+別コミュニティの人までエントリーまで持っていくことができれば人の繋がりもできるできると考え、当サイトを作ろうと思った。
+>
 
-* System dependencies
 
-* Configuration
 
-* Database creation
+### ターゲットユーザ
+<
+ダンサー（初心者から）
+主催者
+>
 
-* Database initialization
+### 主な利用シーン
+<ダンスイベントの告知、集客>
 
-* How to run the test suite
+## 設計書
+<...>
 
-* Services (job queues, cache servers, search engines, etc.)
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* Deployment instructions
-
-* ...
+## 使用素材
+- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
+- 使用しない場合は、使用素材の項目をREADMEから削除してください。
