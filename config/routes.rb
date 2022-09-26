@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'genres/index'
+    get 'genres/edit'
+  end
   # 顧客用
   devise_for :users,skip: [:passwords], controllers: {
     registrations: "public/registrations",
@@ -20,5 +24,6 @@ Rails.application.routes.draw do
   
   namespace :admin do
     root to: 'homes#top'
+    resources :genres, only:[:new, :create, :index, :edit, :update]
   end
 end
