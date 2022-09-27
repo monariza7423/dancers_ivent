@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'genres/index'
-    get 'genres/edit'
-  end
+
   # 顧客用
   devise_for :users,skip: [:passwords], controllers: {
     registrations: "public/registrations",
@@ -18,6 +15,7 @@ Rails.application.routes.draw do
   
   scope module: :public do
     get '/about' => 'homes#about', as: 'about'
+    resources :teams, only:[:new, :index, :edit, :show, :create, :update, :destroy]
   end
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

@@ -1,0 +1,6 @@
+<h1>ダンサーネーム編集</h1>
+<%= form_with model: @team, url: team_path do |f| %>
+  <%= f.text_area :name %>
+  
+  <%= f.submit "変更" %>
+<% end %>

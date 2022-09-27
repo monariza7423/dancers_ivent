@@ -1,0 +1,15 @@
+<h1>ダンサーネーム</h1>
+<%= form_with model: @team, url: teams_path do |f| %>
+  <%= f.text_area :name %>
+  
+  <%= f.submit "新規登録" %>
+
+<% end %>
+
+<% @teams.each do |team| %>
+  <%= team.name %>
+  
+  <%= link_to "編集", edit_team_path(team) %>
+  
+  <%= link_to "削除", team_path(team), method: :delete,"data-confirm" => "本当に削除しますか？" %>
+<% end %>
