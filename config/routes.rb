@@ -15,7 +15,8 @@ Rails.application.routes.draw do
   
   scope module: :public do
     get '/about' => 'homes#about', as: 'about'
-    resources :teams, only:[:new, :index, :edit, :show, :create, :update, :destroy]
+    resources :users, only:[:show, :edit, :update]
+    resources :teams, only:[:index, :edit, :create, :update, :destroy]
   end
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
