@@ -1,0 +1,30 @@
+<h1>コンペティション作成</h1>
+<%= form_with model: @competition, url: competitions_path, method: :post do |f| %>
+<table>
+  <tr>
+    <th>概要</th>
+    <td><%= f.text_area :overview %></td>
+  </tr>
+  <tr>
+    <th>ルール</th>
+    <td><%= f.text_area :rule %></td>
+  </tr>
+  <tr>
+    <th>ジャッジ</th>
+    <td><%= f.text_field :judge %></td>
+  </tr>
+  <tr>
+    <th>DJ</th>
+    <td><%= f.text_field :dj %></td>
+  </tr>
+  <tr>
+    <th>MC</th>
+    <td><%= f.text_field :mc %></td>
+  </tr>
+  <tr>
+    <th>賞金</th>
+    <td><%= f.text_field :prize %></td>
+  </tr>
+</table>
+  <%= f.submit "作成" %>
+<% end %>
