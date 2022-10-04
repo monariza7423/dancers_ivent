@@ -2,5 +2,19 @@
 <%= form_with model: @event, url: events_path, method: :post do |f| %>
   <p>イベント名</p>
   <%= f.text_field :name %>
-  <p>コンペティション</p>
+  
+  <p>内容</p>
+  <%= f.collection_select(:competition_id, @competitions, :id, :overview) %>
+  
+  <p>日時</p>
+  <%= f.text_field :day %>
+  
+  <p>開催場所</p>
+  <%= f.text_field :address %>
+  
+  <p>会場</p>
+  <%= f.text_field :venue %>
+  
+  <%= f.submit "作成" %>
+  
 <% end %>
