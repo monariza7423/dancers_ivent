@@ -1,0 +1,6 @@
+<h1>イベント作成</h1>
+<%= form_with model: @event, url: events_path, method: :post do |f| %>
+  <p>イベント名</p>
+  <%= f.text_field :name %>
+  <p>コンペティション</p>
+<% end %>

@@ -1,0 +1,10 @@
+<h1>作成済コンペティション</h1>
+
+<% @competitions.each do |competition| %>
+
+  <%= competition.overview %>
+  
+  <%= link_to "編集", edit_competition_path(competition.id) %>
+  
+<% end %>
+

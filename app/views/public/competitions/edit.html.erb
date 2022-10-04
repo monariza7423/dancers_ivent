@@ -1,0 +1,36 @@
+<h1>編集</h1>
+<%= form_with model: @competition, url: competition_path(@competition.id), method: :patch do |f| %>
+<table>
+  <tr>
+    <th>概要</th>
+    <td><%= f.text_area :overview %></td>
+  </tr>
+  <tr>
+    <th>ルール</th>
+    <td><%= f.text_area :rule %></td>
+  </tr>
+  <tr>
+    <th>ジャッジ</th>
+    <td><%= f.text_field :judge %></td>
+  </tr>
+  <tr>
+    <th>DJ</th>
+    <td><%= f.text_field :dj %></td>
+  </tr>
+  <tr>
+    <th>MC</th>
+    <td><%= f.text_field :mc %></td>
+  </tr>
+  <tr>
+    <th>賞金</th>
+    <td><%= f.text_field :prize %></td>
+  </tr>
+  <tr>
+    <th>ジャンル</th>
+    <td>
+      <%= f.collection_select(:genre_id, @genres, :id, :name, prompt: "選択してください") %>
+    </td>
+  </tr>
+</table>
+  <%= f.submit "編集" %>
+<% end %>

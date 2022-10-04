@@ -2,6 +2,12 @@
 <%= form_with model: @competition, url: competitions_path, method: :post do |f| %>
 <table>
   <tr>
+    <th>ジャンル</th>
+    <td>
+      <%= f.collection_select(:genre_id, @genres, :id, :name, prompt: "選択してください") %>
+    </td>
+  </tr>
+  <tr>
     <th>概要</th>
     <td><%= f.text_area :overview %></td>
   </tr>

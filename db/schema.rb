@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 2022_09_25_113005) do
 
   create_table "events", force: :cascade do |t|
     t.integer "competition_id", null: false
+    t.string "name", null: false
     t.string "address", null: false
     t.string "venue", null: false
     t.datetime "day", null: false
