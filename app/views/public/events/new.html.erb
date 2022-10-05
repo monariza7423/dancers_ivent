@@ -1,11 +1,16 @@
 <h1>イベント作成</h1>
 <%= form_with model: @event, url: events_path, method: :post do |f| %>
+  <p>フライヤー画像</p>
+  <%= f.file_field :image, accept: "image/*" %>
+  
   <p>イベント名</p>
   <%= f.text_field :name %>
   
   <p>内容</p>
-  <%= f.collection_select(:competition_id, @competitions, :id, :overview) %>
-  
+  <%= f.collection_check_boxes( :id, Competition.all, :id, :overview) do |event| %>
+    <%= event.label { event.check_box + event.text } %>
+  <% end %>
+
   <p>日時</p>
   <%= f.text_field :day %>
   
