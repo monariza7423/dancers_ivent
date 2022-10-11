@@ -18,7 +18,9 @@ Rails.application.routes.draw do
     resources :users, only:[:show, :edit, :update]
     resources :teams, only:[:index, :edit, :create, :update, :destroy]
     resources :competitions, only:[:new, :create, :index, :show, :edit, :update, :destroy]
-    resources :events, only:[:new, :create, :index]
+    resources :events, only:[:new, :create, :index, :show] do
+      resources :event_comments, only:[:create]
+    end
   end
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

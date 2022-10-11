@@ -15,6 +15,11 @@ class Public::EventsController < ApplicationController
     @events = Event.all
   end
   
+  def show
+    @event = Event.find(params[:id])
+    @event_comment = EventComment.new
+  end
+  
   private
   def event_params
     params.require(:event).permit(:competition_id, :name, :address, :venue, :day, :image)
