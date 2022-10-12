@@ -4,4 +4,10 @@
     <%= image_tag event.image, size: "100x100" %>
     <%= event.name %>
   <% end %>
+  
+   <!--タグリスト-->
+  <% event.tags.each do |tag|%>
+    <%= tag.name %>
+   
+  <% end %>
 <% end %>

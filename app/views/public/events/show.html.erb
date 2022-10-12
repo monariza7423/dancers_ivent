@@ -2,14 +2,33 @@
   <h1>イベント詳細</h1>
 
   <%= image_tag @event.image, size: "250x250" %>
-
-  <%= @event.name %>
-
-  <%= @event.address %>
-
-  <%= @event.venue %>
-
-  <%= @event.day.strftime('%M %D') %>
+  
+  <table>
+    <tr>
+      <th>イベント名</th>
+      <td><%= @event.name %></td>
+    </tr>
+    <tr>
+      <th>会場</th>
+      <td><%= @event.venue %></td>
+    </tr>
+    <tr>
+      <th>住所</th>
+      <td><%= @event.address %></td>
+    </tr>
+    <tr>
+      <th>開催日</th>
+      <td><%= @event.day.strftime('%M %D') %></td>
+    </tr>
+    <tr>
+      <th>タグ</th>
+      <td>
+        <% @event.tags.each do |tag| %>
+          <%= tag.name %>
+        <% end %>
+      </td>
+    </tr>
+  </table>
 </div>
 
 <div>

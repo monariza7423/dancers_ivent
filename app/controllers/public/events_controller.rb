@@ -7,7 +7,9 @@ class Public::EventsController < ApplicationController
   def create
     event = Event.new(event_params)
     event.competition_id = 1
+    tag_list = params[:event][:tag_names].split(',')
     event.save
+    event.tags_save(tag_list)
     redirect_to user_path(current_user)
   end
   
@@ -22,6 +24,6 @@ class Public::EventsController < ApplicationController
   
   private
   def event_params
-    params.require(:event).permit(:competition_id, :name, :address, :venue, :day, :image)
+    params.require(:event).permit(:competition_id, :name, :address, :venue, :day, :image, :video)
   end
 end
