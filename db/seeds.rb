@@ -7,3 +7,12 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Admin.create(email: "barakamon.goto_life@i.softbank.jp", password: "8144kssk")
+
+Tag.create([
+  { name: "ブレイク"},
+  { name: "ポップ"},
+  { name: "ロック"},
+  { name: "ヒップホップ"},
+  { name: "ハウス"},
+  { name: "フリースタイル"},
+  ])

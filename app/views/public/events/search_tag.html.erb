@@ -1,0 +1,9 @@
+<h5>タグが<%= @tag.name %>の検索結果</h5>
+
+<% @tag_list.each do |list|%>
+    <%= link_to list.name,search_tag_path(tag_id: list.id) %>
+<% end %>
+
+<% @events.each do |event| %>
+    <%= link_to event.name, event_path(event.id) %>
+<% end %>

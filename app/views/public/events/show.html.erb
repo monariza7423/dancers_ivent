@@ -24,7 +24,7 @@
       <th>タグ</th>
       <td>
         <% @event.tags.each do |tag| %>
-          <%= tag.name %>
+          <%= link_to tag.name,search_tag_path(tag_id: tag.id)%>
         <% end %>
       </td>
     </tr>

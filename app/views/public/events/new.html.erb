@@ -4,7 +4,6 @@
   <%= f.file_field :image, accept: "image/*" %>
   
   <p>トレーラー</p>
-  <%= f.file_field :video %>
   
   <p>イベント名</p>
   <%= f.text_field :name %>
@@ -23,11 +22,18 @@
   <p>会場</p>
   <%= f.text_field :venue %>
   
+  <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+    <div>
+      <%= tag.label do %>
+        <%= tag.check_box %>
+        <%= tag.text %>
+      <% end %>
+    </div>
+  <% end %>
+  
   <%= f.label :tag_names %>
   <%= f.text_field :tag_names, placeholder:",で区切ってください" %>
   
   <%= f.submit "作成" %>
-  
-  
   
 <% end %>

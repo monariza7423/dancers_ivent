@@ -21,7 +21,13 @@ Rails.application.routes.draw do
     resources :events, only:[:new, :create, :index, :show] do
       resources :event_comments, only:[:create]
     end
+    # 検索機能
+    get "search" => "searches#search"
+    # タグ検索
+    get "search_tag"=>"events#search_tag"
   end
+  
+
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   

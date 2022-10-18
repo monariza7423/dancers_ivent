@@ -1,0 +1,10 @@
+<h1>検索結果</h1>
+
+<table>
+  <% @events.each do |event| %>
+    <%= link_to event_path(event.id) do %>
+      <%= image_tag event.image, size: "100x100" %>
+      <%= event.name %>
+    <% end %>
+  <% end %>
+</table>
