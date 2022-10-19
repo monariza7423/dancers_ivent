@@ -28,6 +28,14 @@
         <% end %>
       </td>
     </tr>
+    <% if @event.youtube_url.present? %>
+      <tr>
+        <th>動画</th>
+        <td>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= @event.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </td>
+      </tr>
+    <% end %>
   </table>
 </div>
 

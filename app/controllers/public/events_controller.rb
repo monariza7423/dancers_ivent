@@ -13,9 +13,10 @@ class Public::EventsController < ApplicationController
     
     tag_list = params[:event][:tag_names].split(',')
     tag_list.push(selected_tag_list)
-    # url = params[:event,:youtube_url]
-    # url = url.last(11)
-    # event.youtube_url = url
+    # 動画投稿
+    url = event.youtube_url
+    url = url.last(11)
+    event.youtube_url = url
     event.save
     event.tags_save(tag_list)
     redirect_to user_path(current_user)
@@ -43,6 +44,6 @@ class Public::EventsController < ApplicationController
   
   private
   def event_params
-    params.require(:event).permit(:competition_id, :name, :address, :venue, :day, :image, :tag_ids)
+    params.require(:event).permit(:competition_id, :name, :address, :venue, :day, :image, :tag_ids, :youtube_url)
   end
 end
