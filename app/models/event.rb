@@ -5,6 +5,12 @@ class Event < ApplicationRecord
   has_many :tags, through: :event_tags
   has_one_attached :image
   
+  # いいね
+  has_many :favorites, dependent: :destroy
+  def favorited_by?(user)
+    favorites.exists?(user_id: user.id)
+  end
+  
   def self.looks(search, word)
     if search == "perfect_match"
       @event = Event.where("name LIKE?","#{word}")

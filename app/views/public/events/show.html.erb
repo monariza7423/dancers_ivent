@@ -52,3 +52,18 @@
     <%= f.submit "送信する" %>
   <% end %>
 </div>
+
+<!--いいね機能-->
+  <% if @event.favorited_by?(current_user) %>
+    <p>
+      <%= link_to event_favorites_path(@event), method: :delete do %>
+        ♥<%= @event.favorites.count %> いいね
+      <% end %>
+    </p>
+  <% else %>
+    <p>
+      <%= link_to event_favorites_path(@event), method: :post do %>
+        ♡<%= @event.favorites.count %> いいね
+      <% end %>
+    </p>
+  <% end %>

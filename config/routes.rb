@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     resources :teams, only:[:index, :edit, :create, :update, :destroy]
     resources :competitions, only:[:new, :create, :index, :show, :edit, :update, :destroy]
     resources :events, only:[:new, :create, :index, :show] do
+      resource :favorites, only:[:create, :destroy]
       resources :event_comments, only:[:create]
     end
     # 検索機能
