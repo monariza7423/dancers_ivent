@@ -26,6 +26,8 @@ Rails.application.routes.draw do
     get "search" => "searches#search"
     # タグ検索
     get "search_tag"=>"events#search_tag"
+    # 通知機能
+    resources :notifications, only:[:index]
   end
   
 

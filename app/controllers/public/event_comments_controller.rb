@@ -3,8 +3,12 @@ class Public::EventCommentsController < ApplicationController
     event = Event.find(params[:event_id])
     comment = current_user.event_comments.new(event_comment_params)
     comment.event = event
-    comment.save
-    redirect_to event_path(event.id)
+    if comment.save
+      event.create_notification_comment!(current_user, @comment.id)
+      redirect_to event_path(event.id)
+    else
+      render 'events/show'
+    end
   end
   
   private
