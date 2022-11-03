@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'relationships/followings'
+    get 'relationships/followers'
+  end
   # 顧客用
   devise_for :users,skip: [:passwords], controllers: {
     registrations: "public/registrations",
@@ -15,7 +19,11 @@ Rails.application.routes.draw do
   
   scope module: :public do
     get '/about' => 'homes#about', as: 'about'
-    resources :users, only:[:show, :edit, :update]
+    resources :users, only:[:show, :edit, :update] do
+      resource :relationships, only: [:create, :destroy]
+      get 'followings' => 'relationships#followings', as: 'followings'
+      get 'followers' => 'relationships#followers', as: 'followers'
+    end
     resources :teams, only:[:index, :edit, :create, :update, :destroy]
     resources :competitions, only:[:new, :create, :index, :show, :edit, :update, :destroy]
     resources :events, only:[:new, :create, :index, :show] do
