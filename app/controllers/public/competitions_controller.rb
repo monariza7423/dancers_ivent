@@ -14,9 +14,6 @@ class Public::CompetitionsController < ApplicationController
     @competitions = Competition.all
   end
   
-  def show
-  end
-  
   def edit
     @competition = Competition.find(params[:id])
     @genres = Genre.all
