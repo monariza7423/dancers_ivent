@@ -1,69 +1,74 @@
-<div>
-  <h1>イベント詳細</h1>
-
-  <%= image_tag @event.image, size: "250x250" %>
+<div class="container">
+  <div>
+    <h1>イベント詳細</h1>
   
-  <table>
-    <tr>
-      <th>イベント名</th>
-      <td><%= @event.name %></td>
-    </tr>
-    <tr>
-      <th>会場</th>
-      <td><%= @event.venue %></td>
-    </tr>
-    <tr>
-      <th>住所</th>
-      <td><%= @event.address %></td>
-    </tr>
-    <tr>
-      <th>開催日</th>
-      <td><%= @event.day.strftime('%M %D') %></td>
-    </tr>
-    <tr>
-      <th>タグ</th>
-      <td>
-        <% @event.tags.each do |tag| %>
-          <%= link_to tag.name,search_tag_path(tag_id: tag.id)%>
-        <% end %>
-      </td>
-    </tr>
-    <% if @event.youtube_url.present? %>
+    <%= image_tag @event.image, size: "250x250" %>
+    
+    <table class="table table-bordered">
       <tr>
-        <th>動画</th>
+        <th>イベント名</th>
+        <td><%= @event.name %></td>
+      </tr>
+      <tr>
+        <th>会場</th>
+        <td><%= @event.venue %></td>
+      </tr>
+      <tr>
+        <th>住所</th>
+        <td><%= @event.address %></td>
+      </tr>
+      <tr>
+        <th>開催日</th>
+        <td><%= @event.day.strftime('%M %D') %></td>
+      </tr>
+      <tr>
+        <th>タグ</th>
         <td>
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= @event.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <% @event.tags.each do |tag| %>
+            <%= link_to tag.name,search_tag_path(tag_id: tag.id)%>
+          <% end %>
         </td>
       </tr>
+      <% if @event.youtube_url.present? %>
+        <tr>
+          <th>動画</th>
+          <td>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= @event.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+  
+  <!--コメント機能-->
+  <div class="row">
+    <p>コメント件数：<%= @event.event_comments.count %></p>
+    <% @event.event_comments.each do |event_comment| %>
+      <%= event_comment.user.last_name %>
+      <%= event_comment.created_at.strftime('%Y/%m/%d') %><%= event_comment.comment %>
     <% end %>
-  </table>
-</div>
-
-<div>
-  <p>コメント件数：<%= @event.event_comments.count %></p>
-  <% @event.event_comments.each do |event_comment| %>
-    <%= event_comment.user.last_name %>
-    <%= event_comment.created_at.strftime('%Y/%m/%d') %><%= event_comment.comment %>
-  <% end %>
-</div>
-<div>
-  <%= form_with model: [@event, @event_comment] do |f| %>
-    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
-    <%= f.submit "送信する" %>
-  <% end %>
-</div>
-
-<!--いいね機能-->
-  <% if @event.favorited_by?(current_user) %>
-    <p>
-      <%= link_to event_favorites_path(@event), method: :delete do %>
-        ♥<%= @event.favorites.count %> いいね
+  </div>
+  <div class="row">
+    <div class="col-mg-12">
+      <%= form_with model: [@event, @event_comment] do |f| %>
+        <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+        <%= f.submit "送信する" %>
       <% end %>
-    </p>
-  <% else %>
-    <p>
-      <%= link_to event_favorites_path(@event), method: :post do %>
-        ♡<%= @event.favorites.count %> いいね
-      <% end %>
-    </p>
-  <% end %>
+    </div>
+  </div>
+  
+  <!--いいね機能-->
+    <% if @event.favorited_by?(current_user) %>
+      <p>
+        <%= link_to event_favorites_path(@event), method: :delete do %>
+          ♥<%= @event.favorites.count %> いいね
+        <% end %>
+      </p>
+    <% else %>
+      <p>
+        <%= link_to event_favorites_path(@event), method: :post do %>
+          ♡<%= @event.favorites.count %> いいね
+        <% end %>
+      </p>
+    <% end %>
+</div>

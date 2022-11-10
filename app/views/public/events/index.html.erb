@@ -1,13 +1,20 @@
-<h1>イベント一覧</h1>
-<% @events.each do |event| %>
-  <%= link_to event_path(event.id) do %>
-    <%= image_tag event.image, size: "100x100" %>
-    <%= event.name %>
-  <% end %>
+<div class="container">
+  <h1>イベント一覧</h1>
   
-   <!--タグリスト-->
-  <% event.tags.each do |tag|%>
-    <%= tag.name %>
-   
-  <% end %>
-<% end %>
+  <div class="row">
+    <div class="col-mg-10">
+      <% @events.each do |event| %>
+        <%= link_to event_path(event.id) do %>
+          <%= image_tag event.image, size: "100x100" %>
+          <%= event.name %>
+        <% end %>
+        
+         <!--タグリスト-->
+        <% event.tags.each do |tag|%>
+          <%= tag.name %>
+         
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
