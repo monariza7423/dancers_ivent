@@ -7,7 +7,7 @@ class Public::CompetitionsController < ApplicationController
   def create
     competition = Competition.new(competition_params)
     competition.save
-    redirect_to competitions_path
+    redirect_to new_event_path
   end
   
   def index
