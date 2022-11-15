@@ -1,16 +1,11 @@
-<div class="card-list-containe py-5">
-  <h1>イベント一覧</h1>
+<h1>イベント一覧</h1>
+<div class="card_list_container py-5">
   <% @events.each do |event| %>
   <div class="card w-50 mx-auto mt-4 shadow-lg">
     <%= link_to event_path(event.id) do %>
       <%= image_tag event.image, size: "100x100" %>
       <%= event.name %>
     <% end %>
-  
-        
-   <!--タグリスト-->
-    <% event.tags.each do |tag|%>
-      <%= tag.name %>
-    <% end %>
   </div>
   <% end %>
+</div>
